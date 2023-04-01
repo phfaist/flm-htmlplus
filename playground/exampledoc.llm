@@ -2,7 +2,17 @@
 $import:
   - pkg:llm_citations
 llm:
-  default_workflow: 'llm_htmlplus'
+  features:
+    defterm:
+      render_defterm_with_term: False
+
+  template:
+    html:
+      name: 'sunset'
+  template_path:
+    - pkg:llm_templates
+
+  #default_workflow: 'llm_htmlplus'
   # workflow_config:
   #   llm_htmlplus:
   #     page_options:
@@ -12,6 +22,7 @@ llm:
   #         right: 3cm
   #         bottom: 1pt
   #         left: 1cm
+
 title: 'An example LLM document'
 author: 'Ph. Faist'
 date: 'Apr 1, 2023'
@@ -46,3 +57,28 @@ teleportation paper~\cite{doi:10.1103/PhysRevLett.70.1895}, Bell's
 paper~\cite{manual:{Shannon, \emph{The Bell System Technical Journal} 27:379–423
     (1948)}}, as well as some other, perhaps less relevant, papers on the
 arXiv~\cite{arXiv:1902.07714,arXiv:1211.1037}.
+
+\section{Some math.}
+
+Look, now I'll try to typeset some mathematical content.  Let \(\rho\) be any
+quantum state, \(\Gamma \geq 0\) be any positive semidefinite operator, and let
+\(0< \eta \leq 1\).  Define:
+
+\begin{defterm}{hypothesis testing relative entropy}
+  The \emph{hypothesis testing relative entropy} is defined as
+  \begin{align}
+    \mathrm{D}_{\mathrm{h}}^{\eta}\bigl( \rho \Vert \Gamma \bigr)
+    = - \log\,
+    \min_{\substack{0\leq Q\leq \mathbb{I} \\
+          \operatorname{tr}(Q\rho)\geq\eta }} \operatorname{tr}(Q\sigma)\ .
+  \end{align}
+\end{defterm}
+
+Operationally, the hypothesis testing relative entropy is the rate at which one
+can distinguish \(\rho\) from \(\sigma\) in a single instance of a hypothesis
+test where the Type~I error is constrained to be at most \(1-\eta\).
+
+\section{More feature}
+
+We should be able to type hyperlinks with the \verbcode+\url+ command, like so:
+\url{https://github.com/}.

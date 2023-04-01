@@ -1,3 +1,5 @@
+import json
+
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
@@ -61,7 +63,7 @@ class HtmlPlusFragmentRenderer(HtmlFragmentRenderer):
                             environmentname=None,
                             target_id=None):
 
-        if self.render_math_as_svg:
+        if not self.render_math_as_svg:
             return super().render_math_content(delimiters, nodelist, render_context,
                                                displaytype, environmentname, target_id)
 
@@ -89,7 +91,7 @@ class HtmlPlusFragmentRenderer(HtmlFragmentRenderer):
 
         selenium_driver = self._get_selenium_driver(render_context)
 
-        result = selenium_driver.execute_script(
+        result = selenium_driver.driver.execute_script(
             f"return window.runmathjax( {json.dumps(indata)} )"
         )
 
