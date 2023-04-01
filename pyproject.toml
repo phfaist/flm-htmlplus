@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "llm-htmlplus"
+version = "0.1.0"
+description = "Enhancements to LLM's HTML output (syntax highlighting, math equations, option for PDF output, etc.)"
+authors = ["Philippe Faist"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "llm_htmlplus"}]
+include = ["llm_htmlplus/runmathjax_browser_dist.js"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+llm = {git = "https://github.com/phfaist/llm.git"}
+selenium = "^4.7.2"
+webdriver-manager = "^3.8.5"
+pygments = "^2.14.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

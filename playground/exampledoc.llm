@@ -1,0 +1,48 @@
+---
+$import:
+  - pkg:llm_citations
+llm:
+  default_workflow: 'llm_htmlplus'
+  # workflow_config:
+  #   llm_htmlplus:
+  #     page_options:
+  #       size: 'A5'
+  #       margin:
+  #         top: 3cm
+  #         right: 3cm
+  #         bottom: 1pt
+  #         left: 1cm
+title: 'An example LLM document'
+author: 'Ph. Faist'
+date: 'Apr 1, 2023'
+---
+
+\section{Introduction}
+
+This example document is meant to showcase some functionality provided by LLM's
+more advanced \verba{llm_htmlplus} extension package.
+
+For instance, the output HTML highlights code like this:
+\begin{verbatimcode}[python]
+def my_test_function(a, b, c):
+    try:
+        return a.getvalue()
+    return b + c
+\end{verbatimcode}
+
+You can also generate PDF output using the 'pdf' output format:
+\begin{verbatimcode}
+> llm -f pdf exampledoc.llm
+\end{verbatimcode}
+(Don't forget the command line argument \verbcode`-w llm_htmlplus` if you didn't
+specify a \verbcode`llm: default_workflow:` in your document's front matter.)
+
+\section{Test Citations}
+
+While citations are not part of the \verba`llm_htmlpdf` extension package, I do
+want to make sure that the package correctly works in conjunction with other
+extension packages like \verba`llm_citations`.  Let's cite the quantum
+teleportation paper~\cite{doi:10.1103/PhysRevLett.70.1895}, Bell's
+paper~\cite{manual:{Shannon, \emph{The Bell System Technical Journal} 27:379–423
+    (1948)}}, as well as some other, perhaps less relevant, papers on the
+arXiv~\cite{arXiv:1902.07714,arXiv:1211.1037}.

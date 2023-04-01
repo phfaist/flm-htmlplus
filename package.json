@@ -1,0 +1,45 @@
+{
+  "name": "llm-htmlplus",
+  "version": "0.1.0",
+  "repository": "git@github.com:phfaist/llm-htmlplus.git",
+  "packageManager": "yarn@3.3.0",
+  "author": "Philippe Faist",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "mathjax": "^3.2.2",
+    "mathjax-full": "^3.2.2"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.3"
+  },
+  "runmathjax_browser": "llm_htmlplus/runmathjax_browser_dist.js",
+  "runmathjax_script": "llm_htmlplus/runmathjax_script_dist.js",
+  "targets": {
+    "runmathjax_browser": {
+      "isLibrary": false,
+      "includeNodeModules": true,
+      "context": "browser",
+      "outputFormat": "esmodule",
+      "engines": {
+        "browsers": "Chrome 80"
+      },
+      "source": "./node_src/runmathjax_browser.js"
+    },
+    "runmathjax_script": {
+      "isLibrary": false,
+      "includeNodeModules": true,
+      "context": "node",
+      "outputFormat": "commonjs",
+      "engines": {
+        "node": ">= 16"
+      },
+      "source": "./node_src/runmathjax_script.js"
+    }
+  },
+  "scripts": {
+    "build": "parcel build",
+    "build_browser": "parcel build node_src/runmathjax_browser.js --target=runmathjax_browser",
+    "build_script": "parcel build node_src/runmathjax_script.js --target=runmathjax_script"
+  }
+}
