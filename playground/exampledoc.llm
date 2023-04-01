@@ -9,10 +9,17 @@ llm:
   template:
     html:
       name: 'sunset'
+      #name: oldtextbook
+
+  template_config:
+    html:
+      oldtextbook:
+        topmargin: '2rem'
+      
   template_path:
     - pkg:llm_templates
 
-  #default_workflow: 'llm_htmlplus'
+  default_workflow: 'llm_htmlplus'
   # workflow_config:
   #   llm_htmlplus:
   #     page_options:
@@ -22,6 +29,19 @@ llm:
   #         right: 3cm
   #         bottom: 1pt
   #         left: 1cm
+  workflow_config:
+    llm_htmlplus:
+      page_options:
+        size: 'A4'
+        margin:
+          top: 0px
+          right: 0px
+          bottom: 0px
+          left: 0px
+
+  renderer:
+    llm_htmlplus:
+      use_pygments_style: 'colorful'
 
 title: 'An example LLM document'
 author: 'Ph. Faist'

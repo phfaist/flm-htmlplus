@@ -17,7 +17,11 @@ default_page_options = {
         'top': '2.5cm',
         'right': '2.5cm',
         'bottom': '2.5cm',
-        'left': '2.5cm'
+        'left': '2.5cm',
+        # 'top': '0px', #'2.5cm',
+        # 'right': '0px', #'2.5cm',
+        # 'bottom': '0px', #'2.5cm',
+        # 'left': '0px', #'2.5cm'
     }
 }
 
@@ -46,9 +50,7 @@ class HtmlPlusRenderWorkflow(RenderWorkflow):
         return {
             'llm': {
                 'template': {
-                    'html': {
-                        'name': 'simple',
-                    },
+                    'html': 'simple',
                 },
             },
         }
@@ -80,7 +82,8 @@ class HtmlPlusRenderWorkflow(RenderWorkflow):
             self.selenium_driver = SeleniumDriver()
             return super().render_document(document)
         finally:
-            self.selenium_driver.quit()
+            if self.selenium_driver is not None:
+                self.selenium_driver.quit()
             self.selenium_driver = None
 
     def postprocess_rendered_document(self, rendered_content, document, render_context):
@@ -89,7 +92,7 @@ class HtmlPlusRenderWorkflow(RenderWorkflow):
         if self.use_output_format == 'pdf':
             is_rendering_pdf = True
 
-        # minimal HTML document & style -- TODO
+        # get HTML document along with style
 
         def mk_page_css():
             if not is_rendering_pdf:
@@ -101,15 +104,33 @@ class HtmlPlusRenderWorkflow(RenderWorkflow):
 
             logger.debug("Using page_options = %r", page_options)
 
-            s = "@page { "
-            s += f"size: {page_options['size']}; "
+            # ### This solution prints the background image over the entire
+            # ### paper surface, but does not leave enough room between the
+            # ### first/last lines of each page and the page edge...
+            #
+            # s  = "@page { "
+            # s += f"  size: {page_options['size']}; margin: 0px;"
+            # s += "}\n"
+            # s += "@media print { body {"
+            # margin_opts = page_options['margin']
+            # if isinstance(margin_opts, str):
+            #     s += f"padding: {margin_opts}; "
+            # else:
+            #     for margin_which, margin_value in margin_opts.items():
+            #         s += f"padding-{margin_which}: {margin_value}; "
+            # s += "} }\n";
+            
+            # doesn't look great with a background image, but there's not much
+            # we can do about that... :/
+            s  = "@page { "
+            s += f"  size: {page_options['size']}; "
             margin_opts = page_options['margin']
             if isinstance(margin_opts, str):
                 s += f"margin: {margin_opts}; "
             else:
                 for margin_which, margin_value in margin_opts.items():
                     s += f"margin-{margin_which}: {margin_value}; "
-            s += "}\n"
+            s += "}\n";
             logger.debug("page CSS is -> %s", s)
             return s
 

@@ -48,7 +48,7 @@ class SeleniumDriver:
                     "origin": "local"
                 }],
                 "selectedDestinationId": "Save as PDF",
-                "version": 2
+                "version": 2,
             },
             "images": 2,
         }
@@ -60,9 +60,12 @@ class SeleniumDriver:
 
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--run-all-compositor-stages-before-draw")
 
         chrome_options.add_argument('--enable-print-browser')
         chrome_options.add_argument('--kiosk-printing')
+
+        chrome_options.add_argument("--remote-allow-origins=*")
 
         self.driver = webdriver.Chrome(
             ChromeDriverManager().install(),

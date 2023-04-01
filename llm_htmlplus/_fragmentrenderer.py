@@ -3,6 +3,7 @@ import json
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
+from pygments.styles import get_style_by_name
 
 from llm.fragmentrenderer.html import HtmlFragmentRenderer
 from llm.fragmentrenderer import html as fragmentrenderer_html
@@ -21,6 +22,7 @@ class HtmlPlusFragmentRenderer(HtmlFragmentRenderer):
     mathjax_id_offset = 1
 
     use_pygments_highlight = True
+    use_pygments_style = 'friendly'
 
     # ---
 
@@ -40,7 +42,8 @@ class HtmlPlusFragmentRenderer(HtmlFragmentRenderer):
 
         if self.use_pygments_highlight:
             pyg_html_formatter = HtmlFormatter(
-                cssclass='pyg-highlight'
+                cssclass='pyg-highlight',
+                style=self.use_pygments_style,
             )
             render_context.data['pyg_html_formatter'] = pyg_html_formatter
 
