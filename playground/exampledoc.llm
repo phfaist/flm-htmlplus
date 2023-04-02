@@ -7,9 +7,7 @@ llm:
       render_defterm_with_term: False
 
   template:
-    html:
-      name: 'sunset'
-      #name: oldtextbook
+    html: 'sunset' # oldtextbook
 
   template_config:
     html:
