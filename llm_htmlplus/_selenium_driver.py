@@ -68,7 +68,7 @@ class SeleniumDriver:
         chrome_options.add_argument("--remote-allow-origins=*")
 
         self.driver = webdriver.Chrome(
-            ChromeDriverManager().install(),
+            ChromeDriverManager(cache_valid_range=62).install(),
             options=chrome_options
         )
 

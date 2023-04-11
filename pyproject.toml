@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "llm-htmlplus"
-version = "0.1.1"
+version = "0.1.2"
 description = "Enhancements to LLM's HTML output (syntax highlighting, math equations, option for PDF output, etc.)"
 authors = ["Philippe Faist"]
 license = "MIT"
