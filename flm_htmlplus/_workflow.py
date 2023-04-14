@@ -3,9 +3,9 @@ import tempfile
 import logging
 logger = logging.getLogger(__name__)
 
-from llm.main.configmerger import ConfigMerger
-from llm.main.workflow import RenderWorkflow
-from llm.main.workflow.templatebasedworkflow import TemplateBasedRenderWorkflow
+from flm.main.configmerger import ConfigMerger
+from flm.main.workflow import RenderWorkflow
+from flm.main.workflow.templatebasedworkflow import TemplateBasedRenderWorkflow
 
 
 from ._selenium_driver import SeleniumDriver
@@ -34,21 +34,21 @@ class HtmlPlusRenderWorkflow(RenderWorkflow):
     page_options = {}
 
     @staticmethod
-    def get_fragment_renderer_name(req_outputformat, llm_run_info, run_config):
+    def get_fragment_renderer_name(req_outputformat, flm_run_info, run_config):
 
         if req_outputformat and req_outputformat not in ('html', 'pdf'):
             raise ValueError(
-                f"The `llm_htmlplus` workflow only supports output formats 'html' and 'pdf'"
+                f"The `flm_htmlplus` workflow only supports output formats 'html' and 'pdf'"
             )
 
         # Always use our own in-house fragment renderer.  Then we'll adjust
         # according to the desired format.
-        return 'llm_htmlplus'
+        return 'flm_htmlplus'
 
     @staticmethod
-    def get_default_main_config(llm_run_info, run_config):
+    def get_default_main_config(flm_run_info, run_config):
         return {
-            'llm': {
+            'flm': {
                 'template': {
                     'html': 'simple',
                 },
@@ -62,7 +62,7 @@ class HtmlPlusRenderWorkflow(RenderWorkflow):
         self.selenium_driver = None
 
         self.use_output_format = None
-        reqof = self.llm_run_info['requested_outputformat'] or 'html'
+        reqof = self.flm_run_info['requested_outputformat'] or 'html'
         if reqof == 'pdf':
             self.use_output_format = 'pdf'
         elif reqof == 'html':
@@ -158,7 +158,7 @@ class HtmlPlusRenderWorkflow(RenderWorkflow):
 
         html_template_workflow = TemplateBasedRenderWorkflow(
             html_template_workflow_config,
-            self.llm_run_info,
+            self.flm_run_info,
             self.fragment_renderer_information,
             self.fragment_renderer,
         )

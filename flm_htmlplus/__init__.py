@@ -15,7 +15,7 @@ from ._selenium_driver import SeleniumDriver
 from ._workflow import HtmlPlusRenderWorkflow
 
 
-# so that we can load this fragment renderer simply as 'llm_htmlplus':
+# so that we can load this fragment renderer simply as 'flm_htmlplus':
 FragmentRendererInformation = HtmlPlusFragmentRendererInformation
 
 

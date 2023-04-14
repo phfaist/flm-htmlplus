@@ -5,8 +5,8 @@ from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 from pygments.styles import get_style_by_name
 
-from llm.fragmentrenderer.html import HtmlFragmentRenderer
-from llm.fragmentrenderer import html as fragmentrenderer_html
+from flm.fragmentrenderer.html import HtmlFragmentRenderer
+from flm.fragmentrenderer import html as fragmentrenderer_html
 
 from ._selenium_driver import SeleniumDriver
 
@@ -34,7 +34,7 @@ class HtmlPlusFragmentRenderer(HtmlFragmentRenderer):
         if self.selenium_driver is not None:
             return self.selenium_driver
 
-        return render_context.doc.metadata['_llm_workflow'].selenium_driver
+        return render_context.doc.metadata['_flm_workflow'].selenium_driver
 
     # ---
     def document_render_start(self, render_context):
