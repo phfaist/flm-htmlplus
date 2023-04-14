@@ -30,4 +30,4 @@ node_modules_*
 tmp.html
 tmp.pdf
 
-.llm-citations.cache.json
+.flm-citations.cache.json

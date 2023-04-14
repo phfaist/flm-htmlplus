@@ -1,7 +1,7 @@
 {
-  "name": "llm-htmlplus",
+  "name": "flm-htmlplus",
   "version": "0.1.0",
-  "repository": "git@github.com:phfaist/llm-htmlplus.git",
+  "repository": "git@github.com:phfaist/flm-htmlplus.git",
   "packageManager": "yarn@3.3.0",
   "author": "Philippe Faist",
   "license": "MIT",
@@ -13,8 +13,8 @@
   "devDependencies": {
     "parcel": "^2.8.3"
   },
-  "runmathjax_browser": "llm_htmlplus/runmathjax_browser_dist.js",
-  "runmathjax_script": "llm_htmlplus/runmathjax_script_dist.js",
+  "runmathjax_browser": "flm_htmlplus/runmathjax_browser_dist.js",
+  "runmathjax_script": "flm_htmlplus/runmathjax_script_dist.js",
   "targets": {
     "runmathjax_browser": {
       "isLibrary": false,
