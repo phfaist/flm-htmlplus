@@ -10,7 +10,7 @@ include = ["flm_htmlplus/runmathjax_browser_dist.js"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-flm = {git = "https://github.com/phfaist/flm.git"}
+flm-core = ">=0.3.0a10"
 selenium = "^4.7.2"
 webdriver-manager = "^3.8.5"
 pygments = "^2.14.0"
