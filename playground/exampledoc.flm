@@ -1,7 +1,7 @@
 ---
 $import:
-  - pkg:llm_citations
-llm:
+  - pkg:flm_citations
+flm:
   features:
     defterm:
       render_defterm_with_term: False
@@ -15,11 +15,11 @@ llm:
         topmargin: '2rem'
       
   template_path:
-    - pkg:llm_templates
+    - pkg:flm_templates
 
-  default_workflow: 'llm_htmlplus'
+  default_workflow: 'flm_htmlplus'
   # workflow_config:
-  #   llm_htmlplus:
+  #   flm_htmlplus:
   #     page_options:
   #       size: 'A5'
   #       margin:
@@ -28,7 +28,7 @@ llm:
   #         bottom: 1pt
   #         left: 1cm
   workflow_config:
-    llm_htmlplus:
+    flm_htmlplus:
       page_options:
         size: 'A4'
         margin:
@@ -38,18 +38,18 @@ llm:
           left: 0px
 
   renderer:
-    llm_htmlplus:
+    flm_htmlplus:
       use_pygments_style: 'colorful'
 
-title: 'An example LLM document'
+title: 'An example FLM document'
 author: 'Ph. Faist'
 date: 'Apr 1, 2023'
 ---
 
 \section{Introduction}
 
-This example document is meant to showcase some functionality provided by LLM's
-more advanced \verba{llm_htmlplus} extension package.
+This example document is meant to showcase some functionality provided by FLM's
+more advanced \verba{flm_htmlplus} extension package.
 
 For instance, the output HTML highlights code like this:
 \begin{verbatimcode}[python]
@@ -61,16 +61,16 @@ def my_test_function(a, b, c):
 
 You can also generate PDF output using the 'pdf' output format:
 \begin{verbatimcode}
-> llm -f pdf exampledoc.llm
+> flm -f pdf exampledoc.flm
 \end{verbatimcode}
-(Don't forget the command line argument \verbcode`-w llm_htmlplus` if you didn't
-specify a \verbcode`llm: default_workflow:` in your document's front matter.)
+(Don't forget the command line argument \verbcode`-w flm_htmlplus` if you didn't
+specify a \verbcode`flm: default_workflow:` in your document's front matter.)
 
 \section{Test Citations}
 
-While citations are not part of the \verba`llm_htmlpdf` extension package, I do
+While citations are not part of the \verba`flm_htmlpdf` extension package, I do
 want to make sure that the package correctly works in conjunction with other
-extension packages like \verba`llm_citations`.  Let's cite the quantum
+extension packages like \verba`flm_citations`.  Let's cite the quantum
 teleportation paper~\cite{doi:10.1103/PhysRevLett.70.1895}, Bell's
 paper~\cite{manual:{Shannon, \emph{The Bell System Technical Journal} 27:379–423
     (1948)}}, as well as some other, perhaps less relevant, papers on the

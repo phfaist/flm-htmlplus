@@ -7,6 +7,7 @@ logger = logging.getLogger(__name__)
 
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.expected_conditions import staleness_of
@@ -68,8 +69,11 @@ class SeleniumDriver:
         chrome_options.add_argument("--remote-allow-origins=*")
 
         self.driver = webdriver.Chrome(
-            ChromeDriverManager(cache_valid_range=62).install(),
-            options=chrome_options
+            service=ChromeService(
+                ChromeDriverManager(version="114.0.5735.90",
+                                    cache_valid_range=124).install(),
+            ),
+            options=chrome_options,
         )
 
 
@@ -80,7 +84,7 @@ class SeleniumDriver:
 
 
     def quit(self):
-        if self.driver is not None:
+        if hasattr(self, 'driver') and self.driver is not None:
             self.driver.quit()
         self.driver = None
 
