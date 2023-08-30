@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "flm-htmlplus"
 version = "0.1.4"
-description = "Enhancements to LLM's HTML output (syntax highlighting, math equations, option for PDF output, etc.)"
+description = "Enhancements to FLM's HTML output (syntax highlighting, math equations, option for PDF output, etc.)"
 authors = ["Philippe Faist"]
 license = "MIT"
 readme = "README.md"
